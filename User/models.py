@@ -3,5 +3,18 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 
-# The User class is django's default user class
-# The fields are - username, email, password, first_name, last_name,......
+class Patient(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    blood_group = models.CharField(max_length=3)
+    age = models.IntegerField()
+
+
+
+class Doctor(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    qualification = models.CharField(max_length=100)
+    contact_number = models.CharField(max_length=20)
+    
+    def __str__(self) -> str:
+        return self.user.username
+

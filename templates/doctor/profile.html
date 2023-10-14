@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Doctor Profile</title>
+    </head>
+    <body>
+        <h1>Doctor Profile</h1>
+        <h2> {{ doctor.user.first_name }} {{ doctor.user.last_name }} </h2>
+        <h3> {{ doctor.qualification }} </h3>
+
+        <h1> View appiontment slots</h1>
+    <form method="post">
+        {% csrf_token %}
+        <label for="date">Date:</label>
+        <input type="date" id="date" name="date">
+
+        <input type="submit" value="Submit">
+
+    </form>
+    {% if appointments %}
+        <table>
+            <tr>
+                <th>Start Time</th>
+                <th>End Time</th>
+                <th>Available</th>
+            </tr>
+            {% for appointment in appointments %}
+                <tr>
+                    <td>{{ appointment.start_time }}</td>
+                    <td>{{ appointment.end_time }}</td>
+                    <td>{{ appointment.is_available }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% endif %}
+    </body>
+
+
+</html>

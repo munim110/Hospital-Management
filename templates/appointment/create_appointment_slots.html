@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Appointment Management</title>
+</head>
+<body>
+    <h1>Appointment Management</h1>
+    <h2>Create Your Appointment slots</h2>
+
+    <form method="post">
+        {% csrf_token %}
+        <label for="date">Date:</label>
+        <input type="date" id="date" name="date">
+
+        <label for="start-time">Start Time:</label>
+        <input type="time" id="start-time" name="start-time">
+
+        <label for="end-time">End Time:</label>
+        <input type="time" id="end-time" name="end-time">
+
+        <input type="submit" value="Submit">
+    </form>
+
+    <h1> View appiontment slots</h1>
+    <form method="post">
+        {% csrf_token %}
+        <label for="date">Date:</label>
+        <input type="date" id="date2" name="date2">
+
+        <input type="submit" value="Submit">
+
+    </form>
+    {% if appointments %}
+        <table>
+            <tr>
+                <th>Start Time</th>
+                <th>End Time</th>
+                <th>Available</th>
+            </tr>
+            {% for appointment in appointments %}
+                <tr>
+                    <td>{{ appointment.start_time }}</td>
+                    <td>{{ appointment.end_time }}</td>
+                    <td>{{ appointment.is_available }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% endif %}
+</body>
+
+</html>
