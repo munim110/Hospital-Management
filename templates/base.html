@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+</head>
+<body bgcolor="cyan">
+    <a href="{% url 'book_appointment' %}">Doctors</a>
+    <a href="{% url 'myProfile' %}">My Profile</a>
+    <a href="{% url 'userLogout' %}">Logout</a>
+    {% block content %}
+    {% endblock %}
+</body>
+</html>

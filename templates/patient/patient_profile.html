@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Profile</title>
+</head>
+<body>
+    <h1>My Profile</h1>
+    <h3> Name: </h3> {{ patient.user.first_name }} {{ patient.user.last_name }}
+    <h3> Blood Group: </h3> {{ patient.blood_group }}
+    <h3> Age: </h3> {{ patient.age }}
+
+    <h1>My bookings</h1>
+    {% if appointments %}
+        <table>
+            <tr>
+                <th>Doctor</th>
+                <th>Start Time</th>
+                <th>End Time</th>
+            </tr>
+            {% for appointment in appointments %}
+                <tr>
+                    <td>{{ appointment.doctor.user.first_name }} {{appointment.doctor.user.last_name }}</td>
+                    <td>{{ appointment.start_time }}</td>
+                    <td>{{ appointment.end_time }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% endif %}
+
+</body>
+</html>

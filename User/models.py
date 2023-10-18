@@ -5,8 +5,11 @@ from django.contrib.auth.models import User
 
 class Patient(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    blood_group = models.CharField(max_length=3)
-    age = models.IntegerField()
+    blood_group = models.CharField(max_length=3, blank=True, null=True)
+    age = models.IntegerField(blank=True, null=True)
+
+    def __str__(self) -> str:
+        return self.user.username
 
 
 

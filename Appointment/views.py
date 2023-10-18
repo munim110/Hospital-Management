@@ -49,7 +49,7 @@ def create_appointment_slots(request):
         doctor = Doctor.objects.get(user=user)
         appointment = Appointment_slots.objects.create(start_time=start_time, end_time=end_time, doctor=doctor)
         appointment.save()
-        return HttpResponse("Appointment slot created")
+        return redirect('create_appointment_slots')
     return render(request, "appointment/create_appointment_slots.html")
 
 
@@ -83,3 +83,18 @@ def doctor_profile(request, doctor_id):
 
     doctor = Doctor.objects.get(id=doctor_id)
     return render(request, "doctor/profile.html", {'doctor': doctor,})
+
+
+def book_appointment_slot(request, appointment_id):
+    if not request.user.is_authenticated:
+        return redirect('userAuth')
+    user = request.user
+    try:
+        patient = Patient.objects.get(user=user)
+    except:
+        return HttpResponse('You are not a patient')
+    appointment = Appointment_slots.objects.get(id=appointment_id)
+    appointment.is_available = False
+    appointment.patient = patient
+    appointment.save()
+    return redirect('myProfile')

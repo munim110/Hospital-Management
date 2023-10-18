@@ -24,12 +24,16 @@
                 <th>Start Time</th>
                 <th>End Time</th>
                 <th>Available</th>
+                <th>Book</th>
             </tr>
             {% for appointment in appointments %}
                 <tr>
                     <td>{{ appointment.start_time }}</td>
                     <td>{{ appointment.end_time }}</td>
                     <td>{{ appointment.is_available }}</td>
+                    {% if appointment.is_available %}
+                    <td><a href="{% url 'book_appointment' appointment.id %}"> Book </a> </td>
+                    {% endif %}
                 </tr>
             {% endfor %}
         </table>

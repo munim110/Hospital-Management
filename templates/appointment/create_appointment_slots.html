@@ -2,9 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Appointment Management</title>
+    <title>My Profile</title>
 </head>
 <body>
+    <h1>My Profile</h1>
+    <h3> Name: </h3> {{ doctor.user.first_name }} {{ doctor.user.last_name }}
+    <h3> Qualification: </h3> {{ doctor.qualification }}
+    <h3> Contact Numbet: </h3> {{ doctor.contact_number }} 
     <h1>Appointment Management</h1>
     <h2>Create Your Appointment slots</h2>
 
