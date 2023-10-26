@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %}
+Prescription
+{% endblock %}
+{% block content %}
+
+<form method="post" id="medicine_form">
+    {% csrf_token %}
+    <input type="hidden" name="patient_id" id="patient_id" value="{{patient.id}}" placeholder="Patient Name">
+    <input type="text" name="symptoms" id="symptoms" placeholder="Symptoms">
+    <input type="text" name="diagnosis" id="diagnosis" placeholder="Diagnosis">
+    <table id="medicine_table">
+        <tr>
+            <td>Medicine Name</td>
+            <td><input type="text" name="medicine_name" id="medicine_name"></td>
+        </tr>
+        <tr>
+            <td>Medicine Quantity</td>
+            <td><input type="text" name="medicine_dose" id="medicine_dose"></td>
+        </tr>
+        <tr>
+            <td>Medicine Duration</td>
+            <td><input type="text" name="medicine_duration" id="medicine_duration"></td>
+        </tr>
+        <tr>
+            <td><input type="button" value="Add"></td>
+        </tr>
+    </table>
+    <input type="submit" value="Submit">
+</form>
+{% load static %}
+<script src="{% static 'js/prescription/add_prescription.js' %}"></script>
+{% endblock %}

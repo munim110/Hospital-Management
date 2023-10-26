@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'User',
     'Appointment',
     'Home',
+    'Prescription',
 ]
 
 MIDDLEWARE = [
